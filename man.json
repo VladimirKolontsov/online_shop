@@ -1,0 +1,20 @@
+{
+  "name" : "man",
+  "listOfProduct" : [ {
+    "name" : "брюки мужские",
+    "price" : 3500,
+    "rating" : 40
+  }, {
+    "name" : "рубашка мужская",
+    "price" : 3000,
+    "rating" : 65
+  }, {
+    "name" : "галстук",
+    "price" : 2000,
+    "rating" : 35
+  }, {
+    "name" : "ремень",
+    "price" : 2300,
+    "rating" : 75
+  } ]
+}

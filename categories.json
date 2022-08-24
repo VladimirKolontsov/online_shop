@@ -1,0 +1,39 @@
+[ {
+  "name" : "woman",
+  "listOfProduct" : [ {
+    "name" : "юбка",
+    "price" : 1500,
+    "rating" : 70
+  }, {
+    "name" : "брюки женские",
+    "price" : 2500,
+    "rating" : 50
+  }, {
+    "name" : "футболка женская",
+    "price" : 500,
+    "rating" : 90
+  }, {
+    "name" : "блузка",
+    "price" : 2700,
+    "rating" : 60
+  } ]
+}, {
+  "name" : "man",
+  "listOfProduct" : [ {
+    "name" : "брюки мужские",
+    "price" : 3500,
+    "rating" : 40
+  }, {
+    "name" : "рубашка мужская",
+    "price" : 3000,
+    "rating" : 65
+  }, {
+    "name" : "галстук",
+    "price" : 2000,
+    "rating" : 35
+  }, {
+    "name" : "ремень",
+    "price" : 2300,
+    "rating" : 75
+  } ]
+} ]
