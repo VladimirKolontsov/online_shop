@@ -1,9 +1,7 @@
 package shop;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -17,6 +15,8 @@ public class Run {
     private static final List<Product> basket = new ArrayList<>();
     private static final List<Order> orders = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
+    private static LocalDate date = LocalDate.now();
+    private static int numberOfOrder = 0;
 
     public static void main(String[] args) {
 
@@ -107,29 +107,30 @@ public class Run {
                 case 5 -> sortGoods(category.getListOfProduct(), Comparator.comparing(Product::getPrice));
                 case 6 -> sortGoods(category.getListOfProduct(), Comparator.comparing(Product::getRating));
                 case 7 -> reverse(category);
-                case 8 -> buyBasket();
+                case 8 -> buyBasket(++numberOfOrder);
+                case 9 -> showOrders();
             }
         } while (command != 0);
     }
 
-    private static void buyBasket() {
-        int num = 1;
-        LocalDate dateOfBought = LocalDate.now();
+    private static void showOrders() {//сделать вывод красивей
+        for (Order order : orders) {
+            System.out.println(order);
+            System.out.println("______________");
+        }
+    }
 
-        Order order = new Order(num, List.copyOf(basket), dateOfBought.plusDays(3));
+    private static void buyBasket(int num) {
 
+        Order order = new Order(num, List.copyOf(basket), date.plusDays(3));
+
+        orders.add(order);
         basket.clear();
 
-        System.out.println(num);
-        for (Product product : orders) {
-            System.out.println(product.getName() + " : " + product.getPrice());
-        }
-        System.out.println("Delivery date: " + dateOfBought.plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-//order добавить в orders, сделать вывод заказа
     }
 
     private static void showTheBasket(String nameCategory) {
-        LocalDate date = LocalDate.now();
+
         System.out.println("Дата                          " + date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         System.out.println();
         System.out.println("Продукты         Категория          Цена");

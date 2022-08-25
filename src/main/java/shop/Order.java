@@ -15,15 +15,24 @@ public class Order {
         this.deliveryDate = deliveryDate;
     }
 
-    private int getNum() {
+    public int getNum() {
         return num;
     }
 
-    private List<Product> getorderedGoods() {
+    public List<Product> getorderedGoods() {
         return orderedGoods;
     }
 
-    private LocalDate getDeliveryDate() {
+    public LocalDate getDeliveryDate() {
         return deliveryDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "num=" + num +
+                ", orderedGoods=" + orderedGoods +
+                ", deliveryDate=" + deliveryDate +
+                '}';
     }
 }
