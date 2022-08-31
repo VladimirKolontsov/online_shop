@@ -27,12 +27,21 @@ public class Order {
         return deliveryDate;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "num=" + num +
-                ", orderedGoods=" + orderedGoods +
-                ", deliveryDate=" + deliveryDate +
-                '}';
+    public void printOrder(List<Product> order) {
+
+        for (Product product : order) {
+            System.out.println(product.getName() + "     " + product.getPrice());
+        }
+
     }
+
+    public void totalPriceOfOrder(List<Product> order) {
+        int sum = 0;
+        for (Product product : order) {
+            sum += product.getPrice();
+        }
+
+        System.out.println("Сумма заказа: " + sum);
+    }
+
 }

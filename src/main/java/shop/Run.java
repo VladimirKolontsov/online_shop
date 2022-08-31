@@ -100,8 +100,14 @@ public class Run {
             command = scanner.nextInt();
 
             switch (command) {
-                case 1 -> addToTheBasket(category.getListOfProduct());
-                case 2 -> deleteFromBasket(category.getListOfProduct());
+                case 1 -> {
+                    addToTheBasket(category.getListOfProduct());
+                    showTheBasket(category.getName());
+                }
+                case 2 -> {
+                    deleteFromBasket(category.getListOfProduct());
+                    showTheBasket(category.getName());
+                }
                 case 3 -> showTheBasket(category.getName());
                 case 4 -> sortGoods(category.getListOfProduct(), Comparator.comparing(Product::getName));
                 case 5 -> sortGoods(category.getListOfProduct(), Comparator.comparing(Product::getPrice));
@@ -113,9 +119,14 @@ public class Run {
         } while (command != 0);
     }
 
-    private static void showOrders() {//сделать вывод красивей
+    private static void showOrders() {
         for (Order order : orders) {
-            System.out.println(order);
+            System.out.println("Номер заказа: " + order.getNum());
+            System.out.println();
+            order.printOrder(order.getorderedGoods());
+            System.out.println();
+            order.totalPriceOfOrder(order.getorderedGoods());
+            System.out.println("Дата доставки: " + order.getDeliveryDate());
             System.out.println("______________");
         }
     }
