@@ -2,7 +2,6 @@ package shop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Run {
 
-    public static List<Category> clothes = new ArrayList<>();//TODO пришлось сделать публичной, иначе не могу ее достать в Graphics, а вообще я походу полную чушь сделал(
+    private static List<Category> clothes = new ArrayList<>();//TODO пришлось сделать публичной, иначе не могу ее достать в Graphics, а вообще я походу полную чушь сделал(
     private static final List<Product> basket = new ArrayList<>();
     private static final List<Order> orders = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
@@ -20,10 +19,10 @@ public class Run {
 
     public static void main(String[] args) {
 
-        Graphic graphic = new Graphic();
-        graphic.setVisible(true);
 
         fillProducts();
+        Graphic graphic = new Graphic();
+        graphic.setVisible(true);
 
         int command;
 
@@ -206,4 +205,11 @@ public class Run {
         }
     }
 
+    public static Product [] getClothes() {
+        List<Product> listProduct = clothes.stream()
+                .flatMap(category -> category.getListOfProduct().stream())
+                .toList();
+        Product[] products = listProduct.toArray(p -> new Product[listProduct.size()]);
+        return products;
+    }
 }
