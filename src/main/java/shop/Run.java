@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Run {
 
-    private static List<Category> clothes = new ArrayList<>();//TODO пришлось сделать публичной, иначе не могу ее достать в Graphics, а вообще я походу полную чушь сделал(
+    public static List<Category> clothes = new ArrayList<>();//TODO пришлось сделать публичной, иначе не могу ее достать в Graphics, а вообще я походу полную чушь сделал(
     private static final List<Product> basket = new ArrayList<>();
     private static final List<Order> orders = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
@@ -160,7 +160,7 @@ public class Run {
         System.out.println("итого:                            " + sum);
     }
 
-    public static void addToTheBasket(List<Product> goods) {
+    private static void addToTheBasket(List<Product> goods) {
         int numOfGood;
         do {
             numOfGood = scanner.nextInt();
@@ -195,7 +195,7 @@ public class Run {
         }
     }
 
-    public static void reverse(Category category) {
+    private static void reverse(Category category) {
         Collections.reverse(category.getListOfProduct());
 
         int count = 1;
@@ -212,4 +212,7 @@ public class Run {
         Product[] products = listProduct.toArray(p -> new Product[listProduct.size()]);
         return products;
     }
+
+
+
 }

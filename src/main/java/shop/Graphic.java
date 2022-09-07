@@ -2,39 +2,71 @@ package shop;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 import javax.swing.*;
 
 public class Graphic extends JFrame implements ActionListener {
 
-    private JButton categories = new JButton("show categories");
-    private JButton exit = new JButton("exit");
+    private JButton addToBasket = new JButton("add");
+    private JButton buy = new JButton("buy");
     private JComboBox<Product> listOfClothes = new JComboBox<>(Run.getClothes());
-    private JButton woman = new JButton("woman");
-    private JButton man = new JButton("man");
-    private JButton previous = new JButton("go back");
+    private JComboBox<Product> myBasket = new JComboBox<>();
     private Product selectAddProduct;
+    private Product selectBasketProduct;
 
     public Graphic() {
         super("Your online shop");
         this.setBounds(100, 100, 500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new FlowLayout());
-        categories.addActionListener(this);
         listOfClothes.setSize(100, 20);
+        myBasket.setSize(100, 20);
         this.add(listOfClothes);
-        this.add(categories);
-        this.add(exit);
+        this.add(addToBasket);
+        this.add(buy);
+        this.add(myBasket);
         listOfClothes.addActionListener(this);
+        addToBasket.addActionListener(this);
+        buy.addActionListener(this);
+        myBasket.addActionListener(this);
 
     }
 
     @Override
-    public void actionPerformed (ActionEvent e){
+    public void actionPerformed (ActionEvent e) {
         if (e.getSource() == listOfClothes) {
             if (listOfClothes.getSelectedItem() != null) {
                 selectAddProduct = (Product) listOfClothes.getSelectedItem();
             }
+        } else if (e.getSource() == myBasket) {
+            if (myBasket.getSelectedItem() != null) {
+                selectBasketProduct = (Product) myBasket.getSelectedItem();
+            }
+//        } else if (e.getSource() == addToBasket) {//TODO нихрена не понимаю что тут с логикой делать
+//            listOfClothes.getItemAt((Integer) listOfClothes.getSelectedItem());
+//            myBasket.add()
+//        } else if (e.getSource() == buy) {
+//            String message = "";
+//            int sum = 0;
+//            for (Product product : basketList) {//TODO надо как-то лист продуктов замутить в кнопке addToBasket
+//                message += product + "\n";
+//                sum += product.getPrice();
+//            }
+//            System.out.println("-------------------");
+//            System.out.println("Итого: " + sum);
+//            JOptionPane.showMessageDialog(null, message, "My order", JOptionPane.PLAIN_MESSAGE);
+//            //basketList.clear();
+//        }
         }
-    }
 
+//    public static void addProducts() {
+//        List<Product> listProduct = Run.clothes.stream()
+//                .flatMap(category -> category.getListOfProduct().stream())
+//                .toList();
+//
+//        list
+//
+//    }
+
+    }
 }
