@@ -2,6 +2,7 @@ package shop;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
@@ -42,31 +43,26 @@ public class Graphic extends JFrame implements ActionListener {
             if (myBasket.getSelectedItem() != null) {
                 selectBasketProduct = (Product) myBasket.getSelectedItem();
             }
-//        } else if (e.getSource() == addToBasket) {//TODO нихрена не понимаю что тут с логикой делать
-//            listOfClothes.getItemAt((Integer) listOfClothes.getSelectedItem());
-//            myBasket.add()
-//        } else if (e.getSource() == buy) {
-//            String message = "";
-//            int sum = 0;
-//            for (Product product : basketList) {//TODO надо как-то лист продуктов замутить в кнопке addToBasket
-//                message += product + "\n";
-//                sum += product.getPrice();
-//            }
-//            System.out.println("-------------------");
-//            System.out.println("Итого: " + sum);
-//            JOptionPane.showMessageDialog(null, message, "My order", JOptionPane.PLAIN_MESSAGE);
-//            //basketList.clear();
-//        }
+        } else if (e.getSource() == addToBasket) {
+            myBasket.addItem((Product) listOfClothes.getSelectedItem());
+        } else if (e.getSource() == buy) {
+            String message = "";
+            int sum = 0;
+            int itemcount = myBasket.getItemCount();
+            List<Product> basketList = new ArrayList<>();
+            for (int i = 0; i < itemcount; i++) {
+                basketList.add(myBasket.getItemAt(i));
+            }
+            for (Product product : basketList) {
+                message += product + "\n";
+                sum += product.getPrice();
+            }
+            message += "-------------------\n";
+            message += "Итого: " + sum;
+            JOptionPane.showMessageDialog(null, message, "My order", JOptionPane.PLAIN_MESSAGE);
+            basketList.clear();
+            myBasket.removeAllItems();
         }
-
-//    public static void addProducts() {
-//        List<Product> listProduct = Run.clothes.stream()
-//                .flatMap(category -> category.getListOfProduct().stream())
-//                .toList();
-//
-//        list
-//
-//    }
-
     }
+
 }

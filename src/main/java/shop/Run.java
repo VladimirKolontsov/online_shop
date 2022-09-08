@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Run {
 
-    public static List<Category> clothes = new ArrayList<>();//TODO пришлось сделать публичной, иначе не могу ее достать в Graphics, а вообще я походу полную чушь сделал(
+    private static List<Category> clothes = new ArrayList<>();
     private static final List<Product> basket = new ArrayList<>();
     private static final List<Order> orders = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
@@ -18,7 +18,6 @@ public class Run {
     private static int numberOfOrder = 0;
 
     public static void main(String[] args) {
-
 
         fillProducts();
         Graphic graphic = new Graphic();
@@ -105,8 +104,8 @@ public class Run {
             switch (command) {
                 case 1 -> {
                     addToTheBasket(category.getListOfProduct());
-                    showTheBasket(category.getName());// TODO не могу понять, расскажи почему после того как надобавлял только товаров
-                }//TODO и жму 0, только после этого отрабатывает метод showTheBasket?
+                    showTheBasket(category.getName());
+                }
                 case 2 -> {
                     deleteFromBasket(category.getListOfProduct());
                     showTheBasket(category.getName());
@@ -212,7 +211,5 @@ public class Run {
         Product[] products = listProduct.toArray(p -> new Product[listProduct.size()]);
         return products;
     }
-
-
 
 }
