@@ -114,7 +114,7 @@ public class ConsoleRunner {
             order.printOrder(order.getorderedGoods());
             System.out.println();
             order.totalPriceOfOrder(order.getorderedGoods());
-            System.out.println("Дата доставки: " + order.getDeliveryDate());
+            System.out.println("Дата доставки: " + order.getDeliveryDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
             System.out.println("______________");
         }
     }
