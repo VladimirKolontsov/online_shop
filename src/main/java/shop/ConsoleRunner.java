@@ -1,10 +1,5 @@
 package shop;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -20,6 +15,9 @@ public class ConsoleRunner {
     private static int numberOfOrder = 0;
 
     protected static void startConsole() {
+
+        clothes.add(Run.clothesGraphic.get(0));
+        clothes.add(Run.clothesGraphic.get(1));
 
         int command;
 

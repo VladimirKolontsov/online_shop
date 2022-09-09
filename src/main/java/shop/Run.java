@@ -13,6 +13,7 @@ public class Run {
 
     public static void main(String[] args) {
 
+        fillProducts();
         startShopping();
 
     }
@@ -34,7 +35,6 @@ public class Run {
             switch (menu) {
                 case 1 -> startConsole();
                 case 2 -> {
-                    fillProducts();
                     Graphic graphic = new Graphic();
                     graphic.setVisible(true);
                 }
