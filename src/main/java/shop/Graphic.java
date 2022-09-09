@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
+import static shop.Run.clothesGraphic;
+
 public class Graphic extends JFrame implements ActionListener {
 
     private JButton addToBasket = new JButton("add");
     private JButton buy = new JButton("buy");
-    private JComboBox<Product> listOfClothes = new JComboBox<>(Run.getClothes());
+    private JComboBox<Product> listOfClothes = new JComboBox<>(getClothes());
     private JComboBox<Product> myBasket = new JComboBox<>();
     private Product selectAddProduct;
     private Product selectBasketProduct;
@@ -63,6 +65,14 @@ public class Graphic extends JFrame implements ActionListener {
             basketList.clear();
             myBasket.removeAllItems();
         }
+    }
+
+    public static Product [] getClothes() {
+        List<Product> listProduct = clothesGraphic.stream()
+                .flatMap(category -> category.getListOfProduct().stream())
+                .toList();
+        Product[] products = listProduct.toArray(p -> new Product[listProduct.size()]);
+        return products;
     }
 
 }
