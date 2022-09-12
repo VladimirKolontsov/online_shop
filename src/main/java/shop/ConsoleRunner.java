@@ -14,11 +14,9 @@ public class ConsoleRunner {
     private static LocalDate date = LocalDate.now();
     private static int numberOfOrder = 0;
 
-    protected static void startConsole() {
+    protected static void startConsole(List<Category> clothesGraphic) {
 
-        clothes.add(Run.clothesGraphic.get(0));
-        clothes.add(Run.clothesGraphic.get(1));
-
+        clothes.addAll(clothesGraphic);
         int command;
 
         do {

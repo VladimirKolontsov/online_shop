@@ -9,7 +9,7 @@ import static shop.ConsoleRunner.startConsole;
 
 public class Run {
 
-    protected static List<Category> clothesGraphic = new ArrayList<>();
+    private static List<Category> clothesGraphic = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -33,9 +33,9 @@ public class Run {
             menu = scanner.nextInt();
 
             switch (menu) {
-                case 1 -> startConsole();
+                case 1 -> startConsole(clothesGraphic);
                 case 2 -> {
-                    Graphic graphic = new Graphic();
+                    Graphic graphic = new Graphic(clothesGraphic);
                     graphic.setVisible(true);
                 }
             }
